@@ -1,0 +1,16 @@
+cmake_minimum_required(VERSION 3.25)
+project(Sorting_Visualizer)
+
+set(CMAKE_CXX_STANDARD 17)
+
+add_executable(Sorting_Visualizer main.cpp Engine.cpp Engine.hpp definitions.hpp SortAlgo.cpp SortAlgo.hpp)
+set(PRECOMPILED_HEADERS predefined.hpp)
+target_precompile_headers(Sorting_Visualizer PRIVATE ${PRECOMPILED_HEADERS})
+include_directories(Headers Sources)
+set(SFML_STATIC_LIBRARIES TRUE)
+set(SFML_DIR "D:/SFML-2.5.1/lib/cmake/SFML")
+find_package(SFML 2.5.1 COMPONENTS system window graphics audio REQUIRED)
+#file(COPY "Textures" DESTINATION "${CMAKE_BINARY_DIR}")
+#file(COPY "Resources" DESTINATION "${CMAKE_BINARY_DIR}")
+#file(COPY "Sounds" DESTINATION "${CMAKE_BINARY_DIR}")
+target_link_libraries(Sorting_Visualizer sfml-system sfml-window sfml-graphics sfml-audio)
