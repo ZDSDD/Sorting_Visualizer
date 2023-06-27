@@ -13,6 +13,8 @@
 #include <random>
 #include <thread>
 #include <chrono>
+#include <sstream>
+#include <memory>
 //  SFML STUFF  //
 #include <SFML/Graphics.hpp>
 #include <SFML/Audio.hpp>

@@ -9,7 +9,7 @@
 #include "predefined.hpp"
 #include "SortAlgo.hpp"
 
-enum Sorting_Algo{
+enum Sorting_Algo {
     Bubble,
     Selection_Sort,
     Insertion_Sort,
@@ -26,14 +26,13 @@ enum Sorting_Algo{
 
 };
 
+class SortAlgo;
+
 class Engine {
 private:
     sf::RenderWindow window;
     std::vector<int> data;
-private:
-    //VIEWS
-    sf::View statView;
-    sf::View mainView;
+
 private:
     //RANDOM NUMBER GENERATOR
     std::mt19937 rng;
@@ -44,26 +43,33 @@ private:
     //SOUNDS
     sf::Sound tickSound;
     sf::SoundBuffer tick_sound_buffer;
+
 private:
-    //CLOCKS
-    sf::Clock sortTime;
+    //std::unique_ptr<SortAlgo> sortAlgo;
+    SortAlgo * sortAlgo;
 
 
 private:
     void initArray();
+
     void initSounds();
+
     void initRandomEngine();
+
 public:
     void startSort(Sorting_Algo sortingAlgo);
-    static bool checkIfSorted(const std::vector<int> & array);
-    void reShuffle(std::vector<int> & array);
+
+    void reShuffle(std::vector<int> &array);
 
 public:
     Engine();
-    ~Engine() = default;
+
+    ~Engine();
+
     void run();
-    static void updatePollEvent(sf::RenderWindow & renderWindow);
-    static void drawArray(const std::vector<int> & array, sf::RenderWindow &renderWindow, unsigned short redPos,unsigned short greenPos);
+
+    static void updatePollEvent(sf::RenderWindow &renderWindow);
+
 };
 
 
